@@ -27,7 +27,7 @@ class LoginController extends GetxController {
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
-        if (json['code'] == 0) {
+        if (json['code'] == '1') {
           var token = json['data']['token'];
           final SharedPreferences? prefs = await _prefs;
           await prefs?.setString('token', token);
@@ -35,7 +35,7 @@ class LoginController extends GetxController {
           emailController.clear();
           passwordController.clear();
           Get.off(HomeScreen());
-        } else if (json['code'] == '1') {
+        } else if (json['code'] == '0') {
           throw jsonDecode(response.body)['message'];
         } else {
           throw jsonDecode(response.body)['message'] ?? "unknown error";
