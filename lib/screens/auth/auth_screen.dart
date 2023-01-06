@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
 
-import 'package:api_app/controllers/login_controller.dart';
-import 'package:api_app/controllers/registeration_controller.dart';
-import 'package:api_app/screens/auth/widgets/input_fields.dart';
-import 'package:api_app/screens/auth/widgets/submit_button.dart';
+import 'package:fgetx_auth/screens/auth/widgets/input_fields.dart';
+import 'package:fgetx_auth/screens/auth/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:fgetx_auth/controllers/login_controller.dart';
+import 'package:fgetx_auth/controllers/registration_controller.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -95,7 +95,7 @@ class _AuthScreenState extends State<AuthScreen> {
           height: 20,
         ),
         SubmitButton(
-          onPressed: () => registerationController.registerWithEmail(),
+          onPressed: () => registerationController.registrationEmail(),
           title: 'Register',
         )
       ],
