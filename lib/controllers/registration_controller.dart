@@ -26,7 +26,19 @@ class RegisterationController extends GetxController {
       http.Response response =
           await http.post(url, body: jsonEncode(body), headers: headers);
 
-      if (response.statusCode == 200) {}
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body);
+        if (json['code'] == 0) {
+          var token = json['data']['Token'];
+          debugPrint(token);
+          final SharedPreferences? prefs = await _prefs;
+
+          await prefs?.setString('token', token);
+          nameController.clear();
+          passwordController.clear();
+          emailController.clear();
+        }
+      }
     } catch (e) {}
   }
 }
